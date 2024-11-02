@@ -5,7 +5,7 @@
 			<xs:documentation>The top XML element in the Relativity script body.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:all>
+			<xs:choice maxOccurs="unbounded">
 				<xs:element name="name" nillable="false">
 					<xs:annotation>
 						<xs:documentation>The value between these tags is used to name (and populate the Name column of) the script.</xs:documentation>
@@ -52,7 +52,7 @@
 									<xs:documentation>Constants are values (either static or user input, with a maximum of length of 255 characters) that get passed into the SQL action section.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:all minOccurs="0">
+									<xs:choice minOccurs="0" maxOccurs="10">
 										<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>Limits the available inputs of the constant to the list of options specified. Its entry in the input section is rendered as a drop-down list.</xs:documentation>
@@ -75,7 +75,7 @@
 												</xs:simpleContent>
 											</xs:complexType>
 										</xs:element>
-									</xs:all>
+									</xs:choice>
 									<xs:attribute name="id" use="required">
 										<xs:annotation>
 											<xs:documentation>Defines how the field or constant is referenced in the script's SQL action section.</xs:documentation>
@@ -440,7 +440,7 @@
 						<xs:documentation>This element enables you to reference the current user ACL lists in your scripts.</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
-						<xs:all>
+						<xs:choice maxOccurs="unbounded">
 							<xs:element name="acl" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>This tag pulls back a list of ACL IDs for the current user based on the attributes values so they can be referenced inside of a script.</xs:documentation>
@@ -487,7 +487,7 @@
 									<xs:assert test="(exists(@typeartifactid) or exists(@typeartifactguid)) and (exists(@typeartifactid) != exists(@typeartifactguid))"/>
 								</xs:complexType>
 							</xs:element>
-						</xs:all>
+						</xs:choice>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="action" maxOccurs="10">
@@ -542,7 +542,7 @@
 						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
-			</xs:all>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
