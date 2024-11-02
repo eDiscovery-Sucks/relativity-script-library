@@ -1,0 +1,23 @@
+name: XML Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  validate-xml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate XML against XSD
+        run: |
+          for file in $(find . -name "*.xml"); do
+            echo "Validating $file"
+            xmllint --noout --schema RelativityScriptSchema.xsd "$file" || exit 1
+          done
