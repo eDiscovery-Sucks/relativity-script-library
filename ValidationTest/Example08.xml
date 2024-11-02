@@ -1,0 +1,66 @@
+<script>
+                <name>Sample Relativity Script with Saved Search</name>
+                <version>1</version>
+                <description>This Relativity Script demonstrates how to retrieve values from a selected Saved Search.</description>
+                <category>Case Functionality</category>
+                <input>
+                                <search id="savedSearch" name="Saved Search:" />
+                                <field id="identifierField" name="Identifier Field:" required="true">
+                                                <filters>
+                                                                <category>2</category>
+                                                </filters>
+                                </field>
+                                <field id="updateField" name="Field to Update:" required="true">
+                                                <filters>
+                                                                <type>0</type>
+                                                </filters>
+                                </field>
+                                <constant id="updateValue" name="Updated Value:" type="text" required="true" />
+                                <constant id="artifactIdStart" name="Starting Artifact ID:" type="number" required="true" />
+                                <constant id="artifactIdEnd" name="Ending Artifact ID:" type="number" required="true" />
+                </input>
+                <action returns="table" timeout="1200"><![CDATA[
+                
+                --Check for temp table existance
+                IF NOT OBJECT_ID('EDDSDBO.RelativityTempTable') IS NULL 
+                                BEGIN
+                                                DROP TABLE EDDSDBO.RelativityTempTable
+                                END
+                
+                --Create temp table
+                CREATE TABLE EDDSDBO.RelativityTempTable
+                (
+                                DocumentArtifactID INT,
+                                #identifierField# varchar(200)
+                )
+
+                --Insert all Document Artifact ID's from selected Saved Search
+                INSERT INTO 
+                                EDDSDBO.RelativityTempTable
+                SELECT
+                                [Document].ArtifactID,
+                                NULL
+                #savedSearch# AND [Document].ArtifactID BETWEEN #artifactIdStart# AND #artifactIdEnd#
+
+                --Update temp table with Control Number
+                UPDATE RT
+                SET RT.#identifierField# = DD.#identifierField#
+                FROM EDDSDBO.RelativityTempTable RT
+                INNER JOIN EDDSDBO.Document DD ON RT.DocumentArtifactID = DD.ArtifactID
+                                                                                                                                                                                                                
+                --Update the Fixed Length Field in the temp table for Control Numbers between certain values
+                UPDATE D
+                SET D.#updateField# = '#updateValue#'
+                FROM EDDSDBO.Document D
+                INNER JOIN EDDSDBO.RelativityTempTable RTT ON D.ArtifactID = RTT.DocumentArtifactID
+
+                SELECT 'Fields Updated...'
+                                                                                
+                --Drop temp table
+                IF NOT OBJECT_ID('EDDSDBO.RelativityTempTable') IS NULL
+                                BEGIN
+                                                DROP TABLE EDDSDBO.RelativityTempTable
+                                END
+
+                                ]]></action>
+</script>

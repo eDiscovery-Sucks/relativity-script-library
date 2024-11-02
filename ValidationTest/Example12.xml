@@ -1,0 +1,11 @@
+<script>
+     <name>Example Script</name>
+     <description></description>
+     <category></category>
+     <input orientation="horizontal"></input>
+     <display type="itemlist"></display>
+     <action returns="table">
+          <![CDATA[
+          ]]>
+     </action>
+</script>

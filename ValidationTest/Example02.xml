@@ -1,0 +1,20 @@
+<script>
+     <name>Update Script</name>
+     <input>
+     <constant id="dateReviewed" name="Date Reviewed" type="date"/>
+     <field id="dateReviewedField" name="Date Reviewed Field">
+          <filters>
+               <category>0</category>
+                    <type>2</type>
+               </filters>
+          </field>
+     </input>
+     <action returns="status" name="Update Script" >
+          <![CDATA[
+          UPDATE
+          [Document]
+          SET
+          [#dateReviewedField#] = '#dateReviewed#'
+          ]]>
+     </action>
+</script>

@@ -1,0 +1,14 @@
+<script>
+     <name>Settings Element</name>
+     <description> </description>
+     <category> </category>
+     <input orientation="horizontal" />
+     <display type="report">
+          <settings reporttitle="Test Title" />
+     </display>
+     <action returns="table">
+          <![CDATA[
+               Select top 10 [ArtifactID] from [View]
+          ]]>
+     </action>
+</script>

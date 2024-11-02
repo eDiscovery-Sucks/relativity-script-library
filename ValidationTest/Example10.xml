@@ -1,0 +1,14 @@
+<script>
+     <name>Object Test Script</name>
+     <description></description>
+     <category>Smoke Test 4</category>
+     <input orientation="horizontal">
+          <object id="Tab" name="Tab" displaytype="multipicker" typeartifactid="1035238" rdoviewartifactid="1034262" />
+     </input>
+     <action returns="table">
+          <![CDATA[
+               select top 10 * from [Tab]
+               where [ArtifactID] in (#Tab#)
+          ]]>
+     </action>
+</script>

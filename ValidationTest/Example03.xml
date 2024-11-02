@@ -1,0 +1,14 @@
+<script>
+     <name>Category Example</name>
+                
+     <description></description>
+     <category>test</category>
+     <input></input>
+     <version></version>
+      
+     <action returns="table">
+          <![CDATA[
+               Select Top 10 * from artifact
+          ]]>
+     </action>
+</script>

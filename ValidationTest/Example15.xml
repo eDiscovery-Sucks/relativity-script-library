@@ -1,0 +1,12 @@
+<script>
+     <name>Version Example</name>
+     <description></description>
+     <category></category>
+     <version>1.2.3.0</version>            
+     <input orientation="horizontal" />
+     <display type="itemlist" />
+     <action returns="table">
+          <![CDATA[
+          ]]>
+     </action>
+</script>

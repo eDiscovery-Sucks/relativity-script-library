@@ -1,0 +1,15 @@
+<script>
+     <name></name>
+     <description></description>
+     <category></category>
+     <input></input>
+     <display></display>
+     <version></version>
+     <key></key>
+     <security></security>
+     <action returns="table">
+          <![CDATA[
+            <p> 
+          ]]>
+     </action>
+</script>
