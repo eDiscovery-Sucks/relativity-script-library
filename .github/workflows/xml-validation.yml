@@ -34,7 +34,7 @@ jobs:
         env:
           CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
-          for file in $(find . -name "ValidationTest/*.xml"); do
+          for file in $(find ./ValidationTest -name "*.xml"); do
             echo "Validating $file"
             java -cp $CLASSPATH XMLValidator \
               RelativityScriptSchema.xsd \
