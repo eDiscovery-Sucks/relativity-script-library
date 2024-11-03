@@ -26,9 +26,17 @@ public class XMLValidator {
         AtomicBoolean hasErrors = new AtomicBoolean(false);
         
         try {
+
+            File schemaFile = new File(xsdPath);
+            if (!schemaFile.exists()) {
+                System.err.println("Schema file not found at " + schemaFile.getAbsolutePath());
+                System.exit(1);
+            } else {
+                System.out.println("Loaded schema file from: " + schemaFile.getAbsolutePath());
+            }
+            
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(xsdPath));
-            System.out.println("Loaded schema: " + xsdPath);
             
             Validator validator = schema.newValidator();
 
