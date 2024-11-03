@@ -357,8 +357,6 @@
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
-									<xs:assert test="(exists(@typeartifactid) or exists(@typeartifactguid)) and (exists(@typeartifactid) != exists(@typeartifactguid))"/>
-									<xs:assert test="(exists(@rdoviewartifactid) or exists(@rdoviewartifactguid)) and (exists(@rdoviewartifactid) != exists(@rdoviewartifactguid))"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:choice>
@@ -484,7 +482,6 @@
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
-									<xs:assert test="(exists(@typeartifactid) or exists(@typeartifactguid)) and (exists(@typeartifactid) != exists(@typeartifactguid))"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:choice>
