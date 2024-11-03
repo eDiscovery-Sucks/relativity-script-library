@@ -42,9 +42,9 @@ public class XMLValidator {
             validator.setFeature("http://apache.org/xml/features/validation/schema/augment-psvi", true);
             validator.setFeature("http://apache.org/xml/features/standard-uri-conformant", true);
             //validator.setFeature("http://xml.org/sax/features/namespaces", true);
-            validator.setFeature("http://apache.org/xml/features/validation/warn-on-undeclared-elemdef", true);
-            validator.setFeature("http://apache.org/xml/features/validation/warn-on-duplicate-attdef", true);
-            validator.setFeature("http://apache.org/xml/features/warn-on-duplicate-entitydef", true);
+            //validator.setFeature("http://apache.org/xml/features/validation/warn-on-undeclared-elemdef", true);
+            //validator.setFeature("http://apache.org/xml/features/validation/warn-on-duplicate-attdef", true);
+            //validator.setFeature("http://apache.org/xml/features/warn-on-duplicate-entitydef", true);
 
             validator.setErrorHandler(new org.xml.sax.ErrorHandler() {
                 public void warning(SAXParseException e) {
