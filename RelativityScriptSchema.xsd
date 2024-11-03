@@ -1,15 +1,9 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="unqualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
 	<xs:element name="script">
-		<xs:annotation>
-			<xs:documentation>The top XML element in the Relativity script body.</xs:documentation>
-		</xs:annotation>
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
 				<xs:element name="name" nillable="false">
-					<xs:annotation>
-						<xs:documentation>The value between these tags is used to name (and populate the Name column of) the script.</xs:documentation>
-					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -19,9 +13,6 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="description" nillable="false">
-					<xs:annotation>
-						<xs:documentation>The value between these tags is used to populate the description column of the script.</xs:documentation>
-					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -30,9 +21,6 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="category" nillable="false">
-					<xs:annotation>
-						<xs:documentation>Categories are text fields on the Relativity script object that can help you define the script type. You can also create your own categories.</xs:documentation>
-					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -42,28 +30,16 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="input" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>This tag allows you to define your script inputs and the orientation of them.</xs:documentation>
-					</xs:annotation>
 					<xs:complexType>
 						<xs:choice maxOccurs="10">
 							<xs:element name="constant" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>Constants are values (either static or user input, with a maximum of length of 255 characters) that get passed into the SQL action section.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:choice minOccurs="0" maxOccurs="10">
 										<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>Limits the available inputs of the constant to the list of options specified. Its entry in the input section is rendered as a drop-down list.</xs:documentation>
-											</xs:annotation>
 											<xs:complexType>
 												<xs:simpleContent>
 													<xs:extension base="xs:string">
 														<xs:attribute name="value" use="optional">
-															<xs:annotation>
-																<xs:documentation>Defines the display value (label) for the option if it is different from the actual value.</xs:documentation>
-															</xs:annotation>
 															<xs:simpleType>
 																<xs:restriction base="xs:string">
 																	<xs:whiteSpace value="collapse"/>
@@ -77,9 +53,6 @@
 										</xs:element>
 									</xs:choice>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>Defines how the field or constant is referenced in the script's SQL action section.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -87,9 +60,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="name" use="required">
-										<xs:annotation>
-											<xs:documentation>Defines how the field or constant appears to the user when the Relativity script runs.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -97,9 +67,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="type" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines what sorts of input field(s) render on the script run screen. Valid values are "date", "datetime", "text", "user", "number", and "timezone".</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="date"/>
@@ -112,23 +79,14 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="required" type="xs:boolean" use="optional">
-										<xs:annotation>
-											<xs:documentation>The acceptable values for this attribute are true and false. If not set, the script interprets it as true.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="sql" nillable="false" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>This tag, if used, populates a drop-down menu with the return value of an inline SQL statement.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
 											<xs:attribute name="id" use="required">
-												<xs:annotation>
-													<xs:documentation>Defines how the field is referenced in the SQL action section of the script.</xs:documentation>
-												</xs:annotation>
 												<xs:simpleType>
 													<xs:restriction base="xs:string">
 														<xs:minLength value="1"/>
@@ -136,9 +94,6 @@
 												</xs:simpleType>
 											</xs:attribute>
 											<xs:attribute name="name" use="required">
-												<xs:annotation>
-													<xs:documentation>Defines how the field appears to the user when the Relativity script runs.</xs:documentation>
-												</xs:annotation>
 												<xs:simpleType>
 													<xs:restriction base="xs:string">
 														<xs:minLength value="1"/>
@@ -146,30 +101,18 @@
 												</xs:simpleType>
 											</xs:attribute>
 											<xs:attribute name="required" type="xs:boolean" use="optional">
-												<xs:annotation>
-													<xs:documentation>The acceptable values for this attribute are true and false. If not set, the script interprets it as true.</xs:documentation>
-												</xs:annotation>
 											</xs:attribute>
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="field" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>This tag allows you to reference Relativity workspace fields.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:all>
 										<xs:element name="filters">
-											<xs:annotation>
-												<xs:documentation>In addition to the id and name, each field input has a filters sub-section, and each filter is defined by a code. When a script is run, Relativity presents the input fields as drop-down menus. The types of fields in the drop-down menu are designated by a filter. This allows the user to easily select the correct case field.</xs:documentation>
-											</xs:annotation>
 											<xs:complexType>
 												<xs:choice maxOccurs="unbounded">
 													<xs:element name="type" minOccurs="0" maxOccurs="13">
-														<xs:annotation>
-															<xs:documentation>This tag defines which Relativity field types appear in the filters drop-down menu.</xs:documentation>
-														</xs:annotation>
 														<xs:simpleType>
 															<xs:restriction base="xs:integer">
 																<xs:minInclusive value="0"/>
@@ -178,9 +121,6 @@
 														</xs:simpleType>
 													</xs:element>
 													<xs:element name="category" minOccurs="0" maxOccurs="15">
-														<xs:annotation>
-															<xs:documentation>This element allows you to narrow the field type to a sub-set based on a specific attribute.</xs:documentation>
-														</xs:annotation>
 														<xs:simpleType>
 															<xs:restriction base="xs:integer">
 																<xs:minInclusive value="0"/>
@@ -201,9 +141,6 @@
 										</xs:element>
 									</xs:all>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field is referenced in the SQL action section of the script.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -211,9 +148,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="name" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field appears to the user when the Relativity script runs.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -221,21 +155,12 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="required" type="xs:boolean" use="optional">
-										<xs:annotation>
-											<xs:documentation>The acceptable values for this attribute are true and false. If not set, the script interprets it as true.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="search" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>This tag, if used, populates a drop-down list of saved searches in the inputs section. The selected search is then converted into the FROM clause of its respective saved search.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field is referenced in the SQL action section of the script</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -243,9 +168,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="name" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field appears to the user when the Relativity script runs.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -255,14 +177,8 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="searchprovider" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>This tag, if used, populates a drop-down list of search providers in the case. The selected value is converted into the selected search provider's ID.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field is referenced in the SQL action section of the script.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -270,9 +186,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="name" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field appears to the user when the Relativity script runs.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -280,21 +193,12 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="required" type="xs:boolean" use="optional">
-										<xs:annotation>
-											<xs:documentation>The acceptable values for this attribute are true and false. If not set, the script interprets it as true.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="object" minOccurs="0" maxOccurs="10">
-								<xs:annotation>
-									<xs:documentation>This tag, if used, populates the specified display type with the current instances of the specified object type.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field is referenced in the SQL action section of the script.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -302,9 +206,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="name" use="required">
-										<xs:annotation>
-											<xs:documentation>Determines how the field appears to the user when the Relativity script runs.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -312,24 +213,12 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="required" type="xs:boolean" use="optional">
-										<xs:annotation>
-											<xs:documentation>Controls whether or not the object field is required for the script to run.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact ID of the object field that you want to use inside of the Relativity script</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="rdoviewartifactid" type="xs:integer" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact ID of the view for the object field that you want to appear inside the Relativity script.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="displaytype" use="required">
-										<xs:annotation>
-											<xs:documentation>Controls how the object renders inside the Relativity script. Valid values are "singlepicker" and "multipicker".</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="singlepicker"/>
@@ -338,9 +227,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="typeartifactguid" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact GUID of the object field that you want to use inside of the Relativity script</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
@@ -348,9 +234,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="rdoviewartifactguid" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact GUID of the view for the object field that you want to appear inside the Relativity script.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
@@ -361,9 +244,6 @@
 							</xs:element>
 						</xs:choice>
 						<xs:attribute name="orientation" use="optional">
-							<xs:annotation>
-								<xs:documentation>Allows you to determine how the Relativity script's run page's layout renders. Valid values are "vertical" and "horizontal".</xs:documentation>
-							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:enumeration value="vertical"/>
@@ -374,20 +254,11 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="display">
-					<xs:annotation>
-						<xs:documentation>The display element allows you to control how the script output will be rendered when the script is run.</xs:documentation>
-					</xs:annotation>
 					<xs:complexType>
 						<xs:all minOccurs="0">
 							<xs:element name="settings" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>This tag defines certain attributes about your report. Currently you can define the report title.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:attribute name="reporttitle" use="required">
-										<xs:annotation>
-											<xs:documentation>Defines the title of the report that appears in the report header when the script is rendered as a report.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -398,9 +269,6 @@
 							</xs:element>
 						</xs:all>
 						<xs:attribute name="type" use="required">
-							<xs:annotation>
-								<xs:documentation>Declares what data type the output should be when the script is executed. Valid values are "report" and "table".</xs:documentation>
-							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
 									<xs:enumeration value="report"/>
@@ -411,9 +279,6 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="version" nillable="false">
-					<xs:annotation>
-						<xs:documentation>The value between these tags is used to track the internal script version.</xs:documentation>
-					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="3"/>
@@ -422,9 +287,6 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="key" nillable="false" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>A key is a mechanism used to lock a script within Relativity. If a script has an associated key tag, then it will be locked. You can preview a locked script, but you can't modify it in any way regardless of your permissions. Once a script has been locked, it's no longer possible to edit it. On upgrade to a new version of Relativity, the installer may attempt to deploy new scripts in your Relativity environment. Any new scripts with a higher version and the same key as those in your current instance may be overwritten.</xs:documentation>
-					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -434,20 +296,11 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="security" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>This element enables you to reference the current user ACL lists in your scripts.</xs:documentation>
-					</xs:annotation>
 					<xs:complexType>
 						<xs:choice maxOccurs="unbounded">
 							<xs:element name="acl" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>This tag pulls back a list of ACL IDs for the current user based on the attributes values so they can be referenced inside of a script.</xs:documentation>
-								</xs:annotation>
 								<xs:complexType>
 									<xs:attribute name="id" use="required">
-										<xs:annotation>
-											<xs:documentation>The ID for the field you want to reference inside the Relativity script.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:minLength value="1"/>
@@ -455,14 +308,8 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact ID for the object type that the ACL ID's are referencing.</xs:documentation>
-										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="typeartifactguid" use="optional">
-										<xs:annotation>
-											<xs:documentation>The Artifact Guid for the object that the ACL ID's are referencing.</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
@@ -470,9 +317,6 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="type" use="required">
-										<xs:annotation>
-											<xs:documentation>The permission type for the ACL ID's. Valid values are "view", "edit", and "delete".</xs:documentation>
-										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="view"/>
@@ -487,16 +331,10 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="action" maxOccurs="10">
-					<xs:annotation>
-						<xs:documentation>You can use this tag multiple times to pull back more than one data table from SQL.</xs:documentation>
-					</xs:annotation>
 					<xs:complexType>
 						<xs:simpleContent>
 							<xs:extension base="xs:string">
 								<xs:attribute name="returns" use="required">
-									<xs:annotation>
-										<xs:documentation>Defines how query results are returned. Valid values are "status" and "table".</xs:documentation>
-									</xs:annotation>
 									<xs:simpleType>
 										<xs:restriction base="xs:string">
 											<xs:enumeration value="status"/>
@@ -505,9 +343,6 @@
 									</xs:simpleType>
 								</xs:attribute>
 								<xs:attribute name="timeout" use="optional">
-									<xs:annotation>
-										<xs:documentation>Defines how long the script can run in seconds. It is possible to enter "indefinite", which allows the script to run for an indefinite period of time. If this attribute is omitted, the timeout value defaults to 30 seconds.</xs:documentation>
-									</xs:annotation>
 									<xs:simpleType>
 										<xs:restriction base="xs:string">
 											<xs:pattern value="indefinite|[0-9]+"/>
@@ -515,19 +350,10 @@
 									</xs:simpleType>
 								</xs:attribute>
 								<xs:attribute name="displaywarning" type="xs:boolean" use="optional">
-									<xs:annotation>
-										<xs:documentation>If set to "true", allows a pop-up warning message to appear when running the script. By default, this is set to "true" if not included.</xs:documentation>
-									</xs:annotation>
 								</xs:attribute>
 								<xs:attribute name="allowhtmltagsinoutput" type="xs:boolean" use="optional">
-									<xs:annotation>
-										<xs:documentation>If set to "true", allows HTML tags to be interpreted by the browser instead of rendered as markup.</xs:documentation>
-									</xs:annotation>
 								</xs:attribute>
 								<xs:attribute name="name" use="optional">
-									<xs:annotation>
-										<xs:documentation>The name used to reference the scripts in the item list drop-down menu as well as to populate the subreport header when displayed as a report.</xs:documentation>
-									</xs:annotation>
 									<xs:simpleType>
 										<xs:restriction base="xs:string">
 											<xs:minLength value="1"/>
