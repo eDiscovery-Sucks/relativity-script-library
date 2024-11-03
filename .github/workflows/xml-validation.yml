@@ -15,12 +15,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Install xmllint
-        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
-        
-      - name: Validate XML against XSD
+      - name: Install Java
+        run: sudo apt-get update && sudo apt-get install -y openjdk-11-jre
+
+      - name: Download and Extract Xerces-J
         run: |
-          for file in $(find . -name "*.xml"); do
+          wget https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2-xml-schema-1.1.tar.gz -O xerces.tar.gz
+          mkdir xerces
+          tar -xzf xerces.tar.gz -C xerces --strip-components=1
+
+      - name: Compile XMLValidator Java Program
+        env:
+          CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
+        run: |
+          javac -d . -cp "$CLASSPATH" xml-validator/XMLValidator.java
+
+      - name: Validate XML against XSD using Xerces-J
+        env:
+          CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
+        run: |
+          for file in $(find . -name "ValidationTest/*.xml"); do
             echo "Validating $file"
-            xmllint --noout --schema RelativityScriptSchema.xsd "$file" || exit 1
+            java -cp $CLASSPATH XMLValidator \
+              RelativityScriptSchema.xsd \
+              "$file" || exit 1
           done
