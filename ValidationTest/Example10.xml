@@ -1,4 +1,4 @@
-<script>
+<undef>
      <name>Object Test Script</name>
      <description></description>
      <category>Smoke Test 4</category>
@@ -11,4 +11,4 @@
                where [ArtifactID] in (#Tab#)
           ]]>
      </action>
-</script>
+</undef>
