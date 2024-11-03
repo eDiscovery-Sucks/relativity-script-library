@@ -34,9 +34,19 @@ jobs:
         env:
           CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
+          error_messages=""
           for file in $(find ./ValidationTest -name "*.xml"); do
             echo "Validating $file"
-            java -cp $CLASSPATH XMLValidator \
-              RelativityScriptSchema.xsd \
-              "$file" || exit 1
+            validation_output=$(java -cp "$CLASSPATH" XMLValidator RelativityScriptSchema.xsd "$file" 2>&1)
+
+            if [ $? -ne 0 ]; then
+              error_messages="$error_messages\nValidation failed for $file:\n$validation_output\n"
+            fi
+
+            if [ -n "$error_messages" ]; then
+              echo -e "Validation completed with errors:\n$error_messages"
+              exit 1
+            else
+              echo "All files validated successfully."
+            fi
           done
