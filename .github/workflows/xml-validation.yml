@@ -1,53 +1,19 @@
 name: XML Validation
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-
 jobs:
   validate-xml:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Install Java
-        run: sudo apt-get update && sudo apt-get install -y openjdk-11-jre
-
-      - name: Download and Extract Xerces-J
+      - name: Validate XML against XSD
         run: |
-          wget https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2-xml-schema-1.1.tar.gz -O xerces.tar.gz
-          mkdir xerces
-          tar -xzf xerces.tar.gz -C xerces --strip-components=1
-
-      - name: Compile XMLValidator Java Program
-        env:
-          CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
-        run: |
-          javac -d . -cp "$CLASSPATH" xml-validator/XMLValidator.java
-
-      - name: Validate XML against XSD using Xerces-J
-        env:
-          CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
-        run: |
-          set +e
-          error_messages=""
-          for file in $(find ./ValidationTest -name "*.xml"); do
+          for file in $(find . -name "*.xml"); do
             echo "Validating $file"
-            validation_output=$(java -cp "$CLASSPATH" XMLValidator RelativityScriptSchema.xsd "$file" 2>&1)
-
-            if [ $? -ne 0 ]; then
-              error_messages="$error_messages\nValidation failed for $file:\n$validation_output\n"
-            fi
+            xmllint --noout --schema RelativityScriptSchema.xsd "$file" || exit 1
           done
-
-          if [ -n "$error_messages" ]; then
-            echo -e "Validation completed with errors:\n$error_messages"
-            exit 1
-          else
-            echo "All files validated successfully."
-          fi
