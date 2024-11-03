@@ -21,7 +21,7 @@ public class XMLValidator {
         String xmlPath = args[1];
 
         try {
-            SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+            XMLSchemaFactory factory = new XMLSchemaFactory();
             Schema schema = factory.newSchema(new File(xsdPath));
             System.out.println("Loaded schema: " + xsdPath);
             
