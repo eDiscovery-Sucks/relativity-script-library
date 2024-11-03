@@ -29,6 +29,20 @@ public class XMLValidator {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(xsdPath));
             System.out.println("Loaded schema: " + xsdPath);
+
+            factory.setFeature("http://apache.org/xml/features/validation/schema", true);
+            factory.setFeature("http://xml.org/sax/features/validation", true);
+            factory.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
+            factory.setFeature("http://apache.org/xml/features/validation/id-idref-checking", true);
+            factory.setFeature("http://apache.org/xml/features/validation/identity-constraint-checking", true);
+            factory.setFeature("http://apache.org/xml/features/validation/schema/normalized-value", true);
+            factory.setFeature("http://apache.org/xml/features/validation/schema/element-default", true);
+            factory.setFeature("http://apache.org/xml/features/validation/schema/augment-psvi", true);
+            factory.setFeature("http://apache.org/xml/features/standard-uri-conformant", true);
+            factory.setFeature("http://xml.org/sax/features/namespaces", true);
+            factory.setFeature("http://apache.org/xml/features/validation/warn-on-undeclared-elemdef", true);
+            factory.setFeature("http://apache.org/xml/features/validation/warn-on-duplicate-attdef", true);
+            factory.setFeature("http://apache.org/xml/features/warn-on-duplicate-entitydef", true);
             
             Validator validator = schema.newValidator();
 
