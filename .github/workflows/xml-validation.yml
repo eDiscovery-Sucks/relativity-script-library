@@ -34,7 +34,7 @@ jobs:
         env:
           CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
-          +e
+          set +e
           error_messages=""
           for file in $(find ./ValidationTest -name "*.xml"); do
             echo "Validating $file"
