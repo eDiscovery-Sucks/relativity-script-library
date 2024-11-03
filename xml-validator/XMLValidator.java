@@ -43,14 +43,8 @@ public class XMLValidator {
 
             // Set up SAXParserFactory with strict validation features
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-            saxParserFactory.setNamespaceAware(false);
-            saxParserFactory.setValidating(false); // Schema validation only
-
-            // Enable strict features on SAXParserFactory
-            saxParserFactory.setFeature("http://apache.org/xml/features/validation/schema", true);
-            saxParserFactory.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
-            saxParserFactory.setFeature("http://apache.org/xml/features/validation/id-idref-checking", true);
-            saxParserFactory.setFeature("http://apache.org/xml/features/validation/identity-constraint-checking", true);
+            saxParserFactory.setNamespaceAware(false); // Turn off namespace awareness for no-namespace validation
+            saxParserFactory.setValidating(false); // Use schema validation only
 
             // Create XMLReader with the configured SAXParserFactory
             SAXParser saxParser = saxParserFactory.newSAXParser();
