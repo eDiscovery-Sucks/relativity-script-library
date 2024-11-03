@@ -28,11 +28,11 @@ jobs:
         env:
           CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
-          javac -cp "$CLASSPATH" xml-validator/XMLValidator.java
+          javac -d . -cp "$CLASSPATH" xml-validator/XMLValidator.java
 
       - name: Validate XML against XSD using Xerces-J
         env:
-          CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
+          CLASSPATH: ".:xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
           for file in $(find . -name "*.xml"); do
             echo "Validating $file"
