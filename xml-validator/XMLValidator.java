@@ -21,13 +21,11 @@ public class XMLValidator {
         String xmlPath = args[1];
 
         try {
-            SchemaFactory factory = new XMLSchemaFactory();
+            SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
             Schema schema = factory.newSchema(new File(xsdPath));
+            System.out.println("Loaded schema: " + xsdPath);
+            
             Validator validator = schema.newValidator();
-
-            validator.setFeature("http://apache.org/xml/features/validation/schema", true);
-            validator.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
-
             validator.validate(new StreamSource(new File(xmlPath)));
             System.out.println("Validation successful.");
         } catch (SAXException e) {
