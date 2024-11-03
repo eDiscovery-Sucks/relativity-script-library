@@ -24,13 +24,19 @@ jobs:
           mkdir xerces
           tar -xzf xerces.tar.gz -C xerces --strip-components=1
 
+      - name: Compile XMLValidator Java Program
+        env:
+          CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
+        run: |
+          javac -cp "$CLASSPATH" xml-validator/xml-validator.java
+
       - name: Validate XML against XSD using Xerces-J
         env:
           CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
           for file in $(find . -name "*.xml"); do
             echo "Validating $file"
-            java -cp $CLASSPATH org.apache.xerces.jaxp.validation.XMLSchemaValidator \
-              -schema RelativityScriptSchema.xsd \
+            java -cp $CLASSPATH XMLValidator \
+              RelativityScriptSchema.xsd \
               "$file" || exit 1
           done
