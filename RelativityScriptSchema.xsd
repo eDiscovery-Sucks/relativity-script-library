@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:vc="https://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="unqualified" attributeFormDefault="unqualified" vc:minVersion="1.0">
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="unqualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
 	<xs:element name="script">
 		<xs:annotation>
 			<xs:documentation>The top XML element in the Relativity script body.</xs:documentation>
@@ -465,8 +465,7 @@
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
-												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}
-"/>
+												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
