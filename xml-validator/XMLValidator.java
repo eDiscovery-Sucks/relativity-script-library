@@ -43,7 +43,7 @@ public class XMLValidator {
 
             // Set up SAXParserFactory with strict validation features
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-            saxParserFactory.setNamespaceAware(true);
+            saxParserFactory.setNamespaceAware(false);
             saxParserFactory.setValidating(false); // Schema validation only
 
             // Enable strict features on SAXParserFactory
