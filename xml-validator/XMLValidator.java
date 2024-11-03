@@ -28,7 +28,7 @@ public class XMLValidator {
             
             Validator validator = schema.newValidator();
 
-            validator.setErrorHandler(new org.xml.sax.ErrorHandler() {
+            /*validator.setErrorHandler(new org.xml.sax.ErrorHandler() {
                 public void warning(org.xml.sax.SAXParseException e) {
                     System.out.println("Warning: " + e.getMessage());
                 }
@@ -40,7 +40,7 @@ public class XMLValidator {
                 public void fatalError(org.xml.sax.SAXParseException e) {
                     System.out.println(ANSI_RED + "Fatal error: " + e.getMessage() + ANSI_RESET);
                 }
-            });
+            });*/
             
             validator.validate(new StreamSource(new File(xmlPath)));
             System.out.println("Validation successful.");
