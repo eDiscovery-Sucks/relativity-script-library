@@ -21,8 +21,7 @@ public class XMLValidator {
         String xmlPath = args[1];
 
         try {
-            XMLSchemaFactory factory = new XMLSchemaFactory();
-            factory.setFeature("http://xml.org/sax/features/namespaces", false);
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(xsdPath));
             System.out.println("Loaded schema: " + xsdPath);
             
