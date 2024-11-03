@@ -25,6 +25,9 @@ public class XMLValidator {
             Schema schema = factory.newSchema(new File(xsdPath));
             Validator validator = schema.newValidator();
 
+            validator.setFeature("http://apache.org/xml/features/validation/schema", true);
+            validator.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
+
             validator.validate(new StreamSource(new File(xmlPath)));
             System.out.println("Validation successful.");
         } catch (SAXException e) {
