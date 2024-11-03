@@ -46,9 +46,11 @@ public class XMLValidator {
             System.out.println("Validation successful.");
         } catch (SAXException e) {
             System.out.println(ANSI_RED + "Validation failed: " + e.getMessage() + ANSI_RESET);
+            e.printStackTrace();
             System.exit(1);
         } catch (Exception e) {
             System.out.println(ANSI_RED + "An error occurred: " + e.getMessage() + ANSI_RESET);
+            e.printStackTrace();
             System.exit(1);
         }
     }
