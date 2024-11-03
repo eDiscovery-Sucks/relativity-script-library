@@ -1,4 +1,4 @@
-<script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\RelativityScriptSchema.xsd">
+<script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../RelativityScriptSchema.xsd">
      <name>Object Test Script</name>
      <description></description>
      <category>Smoke Test 4</category>
