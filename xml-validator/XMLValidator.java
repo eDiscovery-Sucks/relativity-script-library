@@ -8,6 +8,9 @@ import javax.xml.validation.Validator;
 import java.io.File;
 
 public class XMLValidator {
+    public static final String ANSI_RED = "\033[0;31m";
+    public static final String ANSI_RESET = "\033[0m";
+    
     public static void main(String[] args) {
         if (args.length < 2) {
             System.out.println("Usage: java XMLValidator <schema.xsd> <file.xml>");
@@ -25,9 +28,11 @@ public class XMLValidator {
             validator.validate(new StreamSource(new File(xmlPath)));
             System.out.println("Validation successful.");
         } catch (SAXException e) {
-            System.out.println("Validation failed: " + e.getMessage());
+            System.out.println(ANSI_RED + "Validation failed: " + e.getMessage() + ANSI_RESET);
+            System.exit(1);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(ANSI_RED + "An error occurred: " + e.getMessage() + ANSI_RESET);
+            System.exit(1);
         }
     }
 }
