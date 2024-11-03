@@ -1,8 +1,9 @@
-import org.apache.xerces.jaxp.validation.XMLSchemaFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-
-import javax.xml.transform.stream.StreamSource;
+import org.xml.sax.XMLReader;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.sax.SAXSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
@@ -26,7 +27,7 @@ public class XMLValidator {
         AtomicBoolean hasErrors = new AtomicBoolean(false);
         
         try {
-
+            // Load and check schema file
             File schemaFile = new File(xsdPath);
             if (!schemaFile.exists()) {
                 System.err.println("Schema file not found at " + schemaFile.getAbsolutePath());
@@ -34,26 +35,28 @@ public class XMLValidator {
             } else {
                 System.out.println("Loaded schema file from: " + schemaFile.getAbsolutePath());
             }
-            
+
+            // Create Schema and Validator
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(new File(xsdPath));
-            
+            Schema schema = factory.newSchema(schemaFile);
             Validator validator = schema.newValidator();
 
-            validator.setFeature("http://apache.org/xml/features/validation/schema", true);
-            validator.setFeature("http://xml.org/sax/features/validation", true);
-            validator.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
-            validator.setFeature("http://apache.org/xml/features/validation/id-idref-checking", true);
-            validator.setFeature("http://apache.org/xml/features/validation/identity-constraint-checking", true);
-            validator.setFeature("http://apache.org/xml/features/validation/schema/normalized-value", true);
-            validator.setFeature("http://apache.org/xml/features/validation/schema/element-default", true);
-            validator.setFeature("http://apache.org/xml/features/validation/schema/augment-psvi", true);
-            validator.setFeature("http://apache.org/xml/features/standard-uri-conformant", true);
-            //validator.setFeature("http://xml.org/sax/features/namespaces", true);
-            //validator.setFeature("http://apache.org/xml/features/validation/warn-on-undeclared-elemdef", true);
-            //validator.setFeature("http://apache.org/xml/features/validation/warn-on-duplicate-attdef", true);
-            //validator.setFeature("http://apache.org/xml/features/warn-on-duplicate-entitydef", true);
+            // Set up SAXParserFactory with strict validation features
+            SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+            saxParserFactory.setNamespaceAware(true);
+            saxParserFactory.setValidating(false); // Schema validation only
 
+            // Enable strict features on SAXParserFactory
+            saxParserFactory.setFeature("http://apache.org/xml/features/validation/schema", true);
+            saxParserFactory.setFeature("http://apache.org/xml/features/validation/schema-full-checking", true);
+            saxParserFactory.setFeature("http://apache.org/xml/features/validation/id-idref-checking", true);
+            saxParserFactory.setFeature("http://apache.org/xml/features/validation/identity-constraint-checking", true);
+
+            // Create XMLReader with the configured SAXParserFactory
+            SAXParser saxParser = saxParserFactory.newSAXParser();
+            XMLReader xmlReader = saxParser.getXMLReader();
+
+            // Set custom error handler to capture validation messages
             validator.setErrorHandler(new org.xml.sax.ErrorHandler() {
                 public void warning(SAXParseException e) {
                     System.err.println("Warning: " + e.getMessage());
@@ -73,14 +76,17 @@ public class XMLValidator {
                     hasErrors.set(true);
                 }
             });
-            
-            validator.validate(new StreamSource(new File(xmlPath)));
 
+            // Validate using SAXSource with the XMLReader
+            SAXSource source = new SAXSource(xmlReader, new org.xml.sax.InputSource(new File(xmlPath).toURI().toString()));
+            validator.validate(source);
+
+            // Check for any errors
             if (hasErrors.get()) {
                 System.err.println(ANSI_RED + "Validation failed due to errors." + ANSI_RESET);
                 System.exit(1);
             }
-            
+
             System.out.println("Validation successful.");
         } catch (SAXException e) {
             System.err.println(ANSI_RED + "Validation failed: " + e.getMessage() + ANSI_RESET);
