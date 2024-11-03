@@ -28,7 +28,7 @@ jobs:
         env:
           CLASSPATH: "xerces/xercesImpl.jar:xerces/xml-apis.jar"
         run: |
-          javac -cp "$CLASSPATH" xml-validator/xml-validator.java
+          javac -cp "$CLASSPATH" xml-validator/XMLValidator.java
 
       - name: Validate XML against XSD using Xerces-J
         env:
