@@ -3,7 +3,7 @@
 	<xs:element name="script">
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
-				<xs:element name="name" nillable="false">
+				<xs:element name="name" minOccurs ="1" maxOccurs="1" nillable="false">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -12,7 +12,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="description" nillable="false">
+				<xs:element name="description" minOccurs ="1" maxOccurs="1" nillable="false">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -20,7 +20,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="category" nillable="false">
+				<xs:element name="category" minOccurs ="1" maxOccurs="1" nillable="false">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -29,7 +29,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="input" minOccurs="0">
+				<xs:element name="input" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:choice maxOccurs="10">
 							<xs:element name="constant" minOccurs="0" maxOccurs="10">
@@ -253,7 +253,7 @@
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="display">
+				<xs:element name="display" minOccurs ="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:all minOccurs="0">
 							<xs:element name="settings" minOccurs="0">
@@ -278,7 +278,7 @@
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="version" nillable="false">
+				<xs:element name="version" minOccurs ="1" maxOccurs="1" nillable="false">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="3"/>
@@ -286,7 +286,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="key" nillable="false" minOccurs="0">
+				<xs:element name="key" minOccurs ="0" maxOccurs="1" nillable="false">
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:minLength value="1"/>
@@ -295,7 +295,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="security" minOccurs="0">
+				<xs:element name="security" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:choice maxOccurs="unbounded">
 							<xs:element name="acl" maxOccurs="unbounded">
@@ -330,7 +330,7 @@
 						</xs:choice>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="action" maxOccurs="10">
+				<xs:element name="action" minOccurs="1" maxOccurs="10">
 					<xs:complexType>
 						<xs:simpleContent>
 							<xs:extension base="xs:string">
