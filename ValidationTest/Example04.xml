@@ -2,8 +2,8 @@
      <name>Description Example</name>
      <description>This is an example script for using the description element</description>
      <category>Example Category</category>
-     <input orientation="horizontal" />
      <version>1.0</version>
+     <input orientation="horizontal" />
      <display type="table" />
      <action returns="table">
           <![CDATA[

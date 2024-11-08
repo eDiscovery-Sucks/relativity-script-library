@@ -1,8 +1,8 @@
 <script>
      <name>Example Script</name>
      <description>Example Description</description>
-     <version>1.0</version>
      <category>Example Category</category>
+     <version>1.0</version>
      <input orientation="horizontal"></input>
      <display type="table"></display>
      <action returns="table">
