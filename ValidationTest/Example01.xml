@@ -1,7 +1,7 @@
 <script>
-     <name></name>
-     <description></description>
-     <category></category>
+     <name>Example Script 01</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
      <input></input>
      <display></display>
      <version></version>
