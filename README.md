@@ -8,6 +8,7 @@ With this library, we’re hoping to reduce redundancy in script development, co
 This library includes scripts focused on:
 - **Data Manipulation**: Efficiently manage, organize, and modify data within Relativity.
 - **Reporting**: Generate various types of reports to streamline workflows and provide insightful data views.
+
 Scripts are designed to be straightforward and reliable, adhering to a standardized XML and SQL format.
 
 ## Getting Started
