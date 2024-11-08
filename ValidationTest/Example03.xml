@@ -1,10 +1,10 @@
 <script>
      <name>Category Example</name>
                 
-     <description></description>
+     <description>Example Description</description>
      <category>test</category>
      <input></input>
-     <version></version>
+     <version>1.0</version>
       
      <action returns="table">
           <![CDATA[

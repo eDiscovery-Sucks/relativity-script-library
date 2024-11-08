@@ -1,6 +1,6 @@
 <script>
                 <name>Sample Relativity Script with Saved Search</name>
-                <version>1</version>
+                <version>1.0</version>
                 <description>This Relativity Script demonstrates how to retrieve values from a selected Saved Search.</description>
                 <category>Case Functionality</category>
                 <input>

@@ -1,7 +1,7 @@
 <script>
      <name>Example</name>
-     <description> </description>
-     <category></category>
+     <description>Example Decsription</description>
+     <category>Example Category</category>
      <input>
           <searchprovider id="SearchProvider" name="Search Index:" />
             

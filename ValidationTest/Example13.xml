@@ -1,7 +1,7 @@
 <script>
      <name>Display Element</name>
-     <description></description>
-     <category> </category>
+     <description>Example Description</description>
+     <category>Example Category</category>
      <input orientation="horizontal" />
      <display type="report"></display>
      <action returns="table">

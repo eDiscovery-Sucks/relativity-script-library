@@ -1,9 +1,9 @@
 <script>
      <name>Description Example</name>
      <description>This is an example script for using the description element</description>
-     <category></category>
+     <category>Example Category</category>
      <input orientation="horizontal" />
-     <display type="itemlist" />
+     <display type="table" />
      <action returns="table">
           <![CDATA[
           ]]>

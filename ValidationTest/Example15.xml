@@ -1,10 +1,10 @@
 <script>
      <name>Version Example</name>
-     <description></description>
-     <category></category>
-     <version>1.2.3.0</version>            
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.2</version>            
      <input orientation="horizontal" />
-     <display type="itemlist" />
+     <display type="table" />
      <action returns="table">
           <![CDATA[
           ]]>

@@ -1,7 +1,7 @@
 <script>
      <name>Example Script</name>
-     <description></description>
-     <category></category>
+     <description>Example Description</description>
+     <category>Example Category</category>
      <input orientation="horizontal"></input>
      <display type="itemlist"></display>
      <action returns="table">

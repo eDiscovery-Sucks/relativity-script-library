@@ -1,6 +1,6 @@
 <script>
     <name>Populate Parent ID to Child</name>
-      <version>2</version>
+      <version>2.0</version>
       <key>F385B552-70E1-A9B8-9DC1-9AE9309EDF49</key>
     <description>This is a workspace-level Relativity script that propagates the Document ID of the parent document to any children of that document.</description>
     <category>Case Functionality</category>

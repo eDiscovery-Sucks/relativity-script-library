@@ -9,7 +9,7 @@
             <option>2</option> 
         </constant> 
     </input> 
-    <display type="itemlist" /> 
+    <display type="table" /> 
     <action returns="table"><![CDATA[ 
         SELECT TOP (1) [ArtifactID] 
         FROM [Artifact] 

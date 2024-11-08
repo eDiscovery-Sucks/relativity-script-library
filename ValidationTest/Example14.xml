@@ -1,7 +1,7 @@
 <script>
      <name>Settings Element</name>
-     <description> </description>
-     <category> </category>
+     <description>Example Description</description>
+     <category>Example Category</category>
      <input orientation="horizontal" />
      <display type="report">
           <settings reporttitle="Test Title" />

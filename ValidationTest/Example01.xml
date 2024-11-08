@@ -3,10 +3,9 @@
      <description>Example Description</description>
      <category>Example Category</category>
      <input></input>
-     <display></display>
-     <version></version>
-     <key></key>
-     <security></security>
+     <display type="table"></display>
+     <version>1.0</version>
+     <key>dadaa5c9-2153-42ae-aef0-a1506be6da2b</key>
      <action returns="table">
           <![CDATA[
             <p> 

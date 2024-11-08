@@ -1,7 +1,7 @@
 <script>
-     <name> Example</name>
-     <description> </description>
-     <category> </category>
+     <name>Example</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
      <input>
           <sql id="viewID" name="Views">
                SELECT

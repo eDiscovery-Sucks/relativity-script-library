@@ -1,9 +1,9 @@
 <script>
      <name>Key Example</name>
      <description>This is an example script for using the key element</description>
-     <category></category>
+     <category>Example Category</category>
      <key>1234-key-456</key>
      <input orientation="horizontal" />
-     <display type="itemlist" />
+     <display type="table" />
      <action returns="table"><![CDATA[]]></action>
 </script>
