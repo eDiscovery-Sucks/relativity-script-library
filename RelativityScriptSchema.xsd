@@ -3,42 +3,40 @@
 	<xs:element name="script">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:all>
-					<xs:element name="name" minOccurs ="1" maxOccurs="1" nillable="false">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:minLength value="1"/>
-								<xs:maxLength value="450"/>
-								<xs:whiteSpace value="collapse"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="description" minOccurs ="1" maxOccurs="1" nillable="false">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:minLength value="1"/>
-								<xs:whiteSpace value="preserve"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="category" minOccurs ="1" maxOccurs="1" nillable="false">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:minLength value="1"/>
-								<xs:whiteSpace value="collapse"/>
-								<xs:maxLength value="450"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="version" minOccurs ="1" maxOccurs="1" nillable="false">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:minLength value="3"/>
-								<xs:pattern value="[0-9]+\.[0-9]+"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-				</xs:all>
+				<xs:element name="name" minOccurs ="1" maxOccurs="1" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="450"/>
+							<xs:whiteSpace value="collapse"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="description" minOccurs ="1" maxOccurs="1" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:whiteSpace value="preserve"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="category" minOccurs ="1" maxOccurs="1" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:whiteSpace value="collapse"/>
+							<xs:maxLength value="450"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="version" minOccurs ="1" maxOccurs="1" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="3"/>
+							<xs:pattern value="[0-9]+\.[0-9]+"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element name="input" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
