@@ -20,7 +20,7 @@ jobs:
           errors=0
           for file in $(find . -name "*.xml"); do
             echo "Validating $file"
-            if ! xmllint --noout --schema RelativityScriptSchema.xsd "$file"; then
+            if ! xmllint --noout --schema "relativity-script-schema.xsd" "$file"; then
               echo "Error in $file"
               errors=$((errors + 1))
             fi

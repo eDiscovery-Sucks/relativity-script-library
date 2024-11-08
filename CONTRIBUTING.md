@@ -23,7 +23,7 @@ Before contributing, please ensure that:
 - **Documentation**: Each script should include documentation in the `scripts` directory README, explaining its purpose, functionality, inputs, outputs, and any important usage details.
 
 ## Script Structure and XML Schema
-All scripts contributed to this library must adhere to a standardized XML format defined by `RelativityScriptSchema.xsd`. The following outlines the required and optional elements for each script:
+All scripts contributed to this library must adhere to a standardized XML format defined by `relativity-script-schema.xsd`. The following outlines the required and optional elements for each script:
 
 ### Required Elements
 - **`<script>`**: Root element containing all other elements.
@@ -62,7 +62,7 @@ In addition to the required elements, the following optional elements are availa
     - `<acl>`: Access control list specifying permissions.
       - Attributes include `id`, `typeartifactid`, `typeartifactguid`, and `type` (view, edit, delete).
 
-Please refer to the `RelativityScriptSchema.xsd` file for additional details on required element structures and constraints.
+Please refer to the `relativity-script-schema.xsd` file for additional details on required element structures and constraints.
 
 ## T-SQL Coding Standards and Best Practices
 When adding SQL code within `<action>` or `<sql>` elements, please follow these best practices to ensure readability, performance, and security.
@@ -101,7 +101,7 @@ When adding SQL code within `<action>` or `<sql>` elements, please follow these 
 All scripts must pass both functional testing and XML schema validation before submission.
 
 1. **Functional Testing**: Ensure that your script works as intended within a Relativity environment (Relativity Server or RelativityOne).
-2. **Schema Validation**: All scripts are validated against the `RelativityScriptSchema.xsd` file through GitHub Actions. Validation checks for compliance with the XML structure and attributes. Any validation errors must be resolved before the script can be merged.
+2. **Schema Validation**: All scripts are validated against the `relativity-script-schema.xsd` file through GitHub Actions. Validation checks for compliance with the XML structure and attributes. Any validation errors must be resolved before the script can be merged.
 
 ## Submitting Your Contribution
 When your script is ready to be submitted:
