@@ -14,10 +14,21 @@ jobs:
                 
       - name: Install xmllint
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils
-        
+
       - name: Validate XML against XSD
         run: |
+          errors=0
           for file in $(find . -name "*.xml"); do
             echo "Validating $file"
-            xmllint --noout --schema RelativityScriptSchema.xsd "$file" || exit 1
+            if ! xmllint --noout --schema RelativityScriptSchema.xsd "$file"; then
+              echo "Error in $file"
+              errors=$((errors + 1))
+            fi
           done
+
+          if [ "$errors" -ne 0 ]; then
+            echo "$errors XML files failed validation"
+            exit 1
+          else
+            echo "All XML files validated successfully"
+          fi
