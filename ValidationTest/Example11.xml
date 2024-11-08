@@ -4,7 +4,6 @@
      <category>Example Category</category>
      <version>1.0</version>
      <key>1234-key-456</key>
-     <input orientation="horizontal" />
      <display type="table" />
      <action returns="table"><![CDATA[]]></action>
 </script>

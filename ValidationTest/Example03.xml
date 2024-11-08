@@ -3,7 +3,6 @@
      <description>Example Description</description>
      <category>test</category>
      <version>1.0</version>
-     <input></input>
      <action returns="table">
           <![CDATA[
                Select Top 10 * from artifact
