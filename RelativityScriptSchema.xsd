@@ -41,7 +41,7 @@
 					<xs:element name="input" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:choice minOccurs = "1" maxOccurs="10">
-								<xs:element name="constant" minOccurs="0" maxOccurs="10">
+								<xs:element name="constant" maxOccurs="10">
 									<xs:complexType>
 										<xs:choice minOccurs="0" maxOccurs="10">
 											<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
@@ -91,7 +91,7 @@
 										</xs:attribute>
 									</xs:complexType>
 								</xs:element>
-								<xs:element name="sql" nillable="false" minOccurs="0" maxOccurs="10">
+								<xs:element name="sql" nillable="false" maxOccurs="10">
 									<xs:complexType>
 										<xs:simpleContent>
 											<xs:extension base="xs:string">
@@ -115,7 +115,7 @@
 										</xs:simpleContent>
 									</xs:complexType>
 								</xs:element>
-								<xs:element name="field" minOccurs="0" maxOccurs="10">
+								<xs:element name="field" maxOccurs="10">
 									<xs:complexType>
 										<xs:all>
 											<xs:element name="filters">
@@ -167,7 +167,7 @@
 										</xs:attribute>
 									</xs:complexType>
 								</xs:element>
-								<xs:element name="search" minOccurs="0" maxOccurs="10">
+								<xs:element name="search" maxOccurs="10">
 									<xs:complexType>
 										<xs:attribute name="id" use="required">
 											<xs:simpleType>
@@ -185,7 +185,7 @@
 										</xs:attribute>
 									</xs:complexType>
 								</xs:element>
-								<xs:element name="searchprovider" minOccurs="0" maxOccurs="10">
+								<xs:element name="searchprovider" maxOccurs="10">
 									<xs:complexType>
 										<xs:attribute name="id" use="required">
 											<xs:simpleType>
@@ -205,7 +205,7 @@
 										</xs:attribute>
 									</xs:complexType>
 								</xs:element>
-								<xs:element name="object" minOccurs="0" maxOccurs="10">
+								<xs:element name="object" maxOccurs="10">
 									<xs:complexType>
 										<xs:attribute name="id" use="required">
 											<xs:simpleType>
