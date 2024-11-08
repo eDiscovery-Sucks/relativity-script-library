@@ -3,7 +3,7 @@
      <description>Example Description</description>
      <category>Example Category</category>
      <input orientation="horizontal"></input>
-     <display type="itemlist"></display>
+     <display type="table"></display>
      <action returns="table">
           <![CDATA[
           ]]>

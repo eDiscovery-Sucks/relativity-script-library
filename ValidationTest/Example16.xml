@@ -1,7 +1,7 @@
 <script>
      <name>Security Example</name>
      <description>Examples of how to use security</description>
-     <category></category>
+     <category>Example Category</category>
      <input></input>
      <security>
           <acl id="id" type="delete" typeartifactguid="e0fed438-97d6-4ee2-b3c8-f7cc2a4512b1" />
