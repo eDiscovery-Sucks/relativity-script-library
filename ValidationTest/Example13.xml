@@ -2,8 +2,8 @@
      <name>Display Element</name>
      <description>Example Description</description>
      <category>Example Category</category>
-     <input orientation="horizontal" />
      <version>1.0</version>
+     <input orientation="horizontal" />
      <display type="report"></display>
      <action returns="table">
           <![CDATA[
