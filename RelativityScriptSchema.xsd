@@ -40,7 +40,7 @@
 				<xs:choice maxOccurs="unbounded">
 					<xs:element name="input" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
-							<xs:choice maxOccurs="10">
+							<xs:choice minOccurs = "1" maxOccurs="10">
 								<xs:element name="constant" minOccurs="0" maxOccurs="10">
 									<xs:complexType>
 										<xs:choice minOccurs="0" maxOccurs="10">
