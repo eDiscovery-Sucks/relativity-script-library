@@ -3,6 +3,7 @@
      <description>Example Description</description>
      <category>Example Category</category>
      <input orientation="horizontal" />
+     <version>1.0</version>
      <display type="report"></display>
      <action returns="table">
           <![CDATA[

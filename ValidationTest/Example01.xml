@@ -2,6 +2,7 @@
      <name>Example Script 01</name>
      <description>Example Description</description>
      <category>Example Category</category>
+     <version>1.0</version>
      <input></input>
      <display type="table"></display>
      <version>1.0</version>

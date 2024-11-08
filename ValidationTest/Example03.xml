@@ -1,11 +1,9 @@
 <script>
      <name>Category Example</name>
-                
      <description>Example Description</description>
      <category>test</category>
-     <input></input>
      <version>1.0</version>
-      
+     <input></input>
      <action returns="table">
           <![CDATA[
                Select Top 10 * from artifact

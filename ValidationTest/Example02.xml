@@ -1,5 +1,8 @@
 <script>
      <name>Update Script</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
      <input>
      <constant id="dateReviewed" name="Date Reviewed" type="date"/>
      <field id="dateReviewedField" name="Date Reviewed Field">

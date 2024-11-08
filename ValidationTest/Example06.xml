@@ -2,6 +2,7 @@
      <name>Example</name>
      <description>Example Description</description>
      <category>Example Category</category>
+     <version>1.0</version>
      <input>
           <sql id="viewID" name="Views">
                SELECT

@@ -1,6 +1,7 @@
 <script>
      <name>Example Script</name>
      <description>Example Description</description>
+     <version>1.0</version>
      <category>Example Category</category>
      <input orientation="horizontal"></input>
      <display type="table"></display>

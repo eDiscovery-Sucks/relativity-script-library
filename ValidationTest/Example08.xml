@@ -1,8 +1,8 @@
 <script>
                 <name>Sample Relativity Script with Saved Search</name>
-                <version>1.0</version>
                 <description>This Relativity Script demonstrates how to retrieve values from a selected Saved Search.</description>
                 <category>Case Functionality</category>
+                <version>1.0</version>
                 <input>
                                 <search id="savedSearch" name="Saved Search:" />
                                 <field id="identifierField" name="Identifier Field:" required="true">

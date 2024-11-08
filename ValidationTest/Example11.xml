@@ -2,6 +2,7 @@
      <name>Key Example</name>
      <description>This is an example script for using the key element</description>
      <category>Example Category</category>
+     <version>1.0</version>
      <key>1234-key-456</key>
      <input orientation="horizontal" />
      <display type="table" />

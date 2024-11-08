@@ -2,6 +2,7 @@
      <name>Settings Element</name>
      <description>Example Description</description>
      <category>Example Category</category>
+     <version>1.0</version>
      <input orientation="horizontal" />
      <display type="report">
           <settings reporttitle="Test Title" />

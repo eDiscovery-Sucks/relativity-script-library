@@ -1,7 +1,8 @@
 <script> 
     <name>Query Artifact ID</name> 
     <description>Queries for an Artifact ID</description> 
-    <category>Example</category> 
+    <category>Example</category>
+    <version>1.0</version>
     <input orientation="horizontal"> 
         <constant id="TextIdentifier" name="TextIdentifier" type="text" required="true" /> 
         <constant id="VersionListNoLabel" name="Version List without Label" type="text"> 
