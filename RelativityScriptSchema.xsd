@@ -2,334 +2,338 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="unqualified" attributeFormDefault="unqualified" vc:minVersion="1.0">
 	<xs:element name="script">
 		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element name="name" minOccurs ="1" maxOccurs="1" nillable="false">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:minLength value="1"/>
-							<xs:maxLength value="450"/>
-							<xs:whiteSpace value="collapse"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="description" minOccurs ="1" maxOccurs="1" nillable="false">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:minLength value="1"/>
-							<xs:whiteSpace value="preserve"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="category" minOccurs ="1" maxOccurs="1" nillable="false">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:minLength value="1"/>
-							<xs:whiteSpace value="collapse"/>
-							<xs:maxLength value="450"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="input" minOccurs="0" maxOccurs="1">
-					<xs:complexType>
-						<xs:choice maxOccurs="10">
-							<xs:element name="constant" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:choice minOccurs="0" maxOccurs="10">
-										<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:simpleContent>
-													<xs:extension base="xs:string">
-														<xs:attribute name="value" use="optional">
+			<xs:sequence>
+				<xs:all>
+					<xs:element name="name" minOccurs ="1" maxOccurs="1" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="450"/>
+								<xs:whiteSpace value="collapse"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="description" minOccurs ="1" maxOccurs="1" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:whiteSpace value="preserve"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="category" minOccurs ="1" maxOccurs="1" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:whiteSpace value="collapse"/>
+								<xs:maxLength value="450"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="version" minOccurs ="1" maxOccurs="1" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="3"/>
+								<xs:pattern value="[0-9]+\.[0-9]+"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:all>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="input" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:choice maxOccurs="10">
+								<xs:element name="constant" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:choice minOccurs="0" maxOccurs="10">
+											<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:simpleContent>
+														<xs:extension base="xs:string">
+															<xs:attribute name="value" use="optional">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:whiteSpace value="collapse"/>
+																		<xs:minLength value="1"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:extension>
+													</xs:simpleContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="type" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="date"/>
+													<xs:enumeration value="datetime"/>
+													<xs:enumeration value="text"/>
+													<xs:enumeration value="user"/>
+													<xs:enumeration value="number"/>
+													<xs:enumeration value="timezone"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="required" type="xs:boolean" use="optional">
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="sql" nillable="false" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="id" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="name" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="required" type="xs:boolean" use="optional">
+												</xs:attribute>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="field" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="filters">
+												<xs:complexType>
+													<xs:choice maxOccurs="unbounded">
+														<xs:element name="type" minOccurs="0" maxOccurs="13">
 															<xs:simpleType>
-																<xs:restriction base="xs:string">
-																	<xs:whiteSpace value="collapse"/>
-																	<xs:minLength value="1"/>
+																<xs:restriction base="xs:integer">
+																	<xs:minInclusive value="0"/>
+																	<xs:maxInclusive value="13"/>
 																</xs:restriction>
 															</xs:simpleType>
-														</xs:attribute>
-													</xs:extension>
-												</xs:simpleContent>
-											</xs:complexType>
-										</xs:element>
-									</xs:choice>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="name" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="type" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:enumeration value="date"/>
-												<xs:enumeration value="datetime"/>
-												<xs:enumeration value="text"/>
-												<xs:enumeration value="user"/>
-												<xs:enumeration value="number"/>
-												<xs:enumeration value="timezone"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="required" type="xs:boolean" use="optional">
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="sql" nillable="false" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:simpleContent>
-										<xs:extension base="xs:string">
-											<xs:attribute name="id" use="required">
-												<xs:simpleType>
-													<xs:restriction base="xs:string">
-														<xs:minLength value="1"/>
-													</xs:restriction>
-												</xs:simpleType>
-											</xs:attribute>
-											<xs:attribute name="name" use="required">
-												<xs:simpleType>
-													<xs:restriction base="xs:string">
-														<xs:minLength value="1"/>
-													</xs:restriction>
-												</xs:simpleType>
-											</xs:attribute>
-											<xs:attribute name="required" type="xs:boolean" use="optional">
-											</xs:attribute>
-										</xs:extension>
-									</xs:simpleContent>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="field" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="filters">
-											<xs:complexType>
-												<xs:choice maxOccurs="unbounded">
-													<xs:element name="type" minOccurs="0" maxOccurs="13">
-														<xs:simpleType>
-															<xs:restriction base="xs:integer">
-																<xs:minInclusive value="0"/>
-																<xs:maxInclusive value="13"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:element>
-													<xs:element name="category" minOccurs="0" maxOccurs="15">
-														<xs:simpleType>
-															<xs:restriction base="xs:integer">
-																<xs:minInclusive value="0"/>
-																<xs:maxInclusive value="15"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:element>
-												</xs:choice>
-											</xs:complexType>
-											<xs:unique name="uniqueTypeValues">
-												<xs:selector xpath="type"/>
-												<xs:field xpath="."/>
-											</xs:unique>
-											<xs:unique name="uniqueCategoryValues">
-												<xs:selector xpath="category"/>
-												<xs:field xpath="."/>
-											</xs:unique>
-										</xs:element>
-									</xs:all>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="name" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="required" type="xs:boolean" use="optional">
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="search" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="name" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="searchprovider" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="name" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="required" type="xs:boolean" use="optional">
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="object" minOccurs="0" maxOccurs="10">
-								<xs:complexType>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="name" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="required" type="xs:boolean" use="optional">
-									</xs:attribute>
-									<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
-									</xs:attribute>
-									<xs:attribute name="rdoviewartifactid" type="xs:integer" use="optional">
-									</xs:attribute>
-									<xs:attribute name="displaytype" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:enumeration value="singlepicker"/>
-												<xs:enumeration value="multipicker"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="typeartifactguid" use="optional">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="rdoviewartifactguid" use="optional">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:choice>
-						<xs:attribute name="orientation" use="optional">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="vertical"/>
-									<xs:enumeration value="horizontal"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="display" minOccurs ="0" maxOccurs="1">
-					<xs:complexType>
-						<xs:all minOccurs="0">
-							<xs:element name="settings" minOccurs="0">
-								<xs:complexType>
-									<xs:attribute name="reporttitle" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:all>
-						<xs:attribute name="type" use="required">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="report"/>
-									<xs:enumeration value="table"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="version" minOccurs ="1" maxOccurs="1" nillable="false">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:minLength value="3"/>
-							<xs:pattern value="[0-9]+\.[0-9]+"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="key" minOccurs ="0" maxOccurs="1" nillable="false">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:minLength value="1"/>
-							<xs:maxLength value="450"/>
-							<xs:whiteSpace value="preserve"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
-				<xs:element name="security" minOccurs="0" maxOccurs="1">
-					<xs:complexType>
-						<xs:choice maxOccurs="unbounded">
-							<xs:element name="acl" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:attribute name="id" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:minLength value="1"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
-									</xs:attribute>
-									<xs:attribute name="typeartifactguid" use="optional">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-									<xs:attribute name="type" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:enumeration value="view"/>
-												<xs:enumeration value="edit"/>
-												<xs:enumeration value="delete"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:choice>
-					</xs:complexType>
-				</xs:element>
+														</xs:element>
+														<xs:element name="category" minOccurs="0" maxOccurs="15">
+															<xs:simpleType>
+																<xs:restriction base="xs:integer">
+																	<xs:minInclusive value="0"/>
+																	<xs:maxInclusive value="15"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+												<xs:unique name="uniqueTypeValues">
+													<xs:selector xpath="type"/>
+													<xs:field xpath="."/>
+												</xs:unique>
+												<xs:unique name="uniqueCategoryValues">
+													<xs:selector xpath="category"/>
+													<xs:field xpath="."/>
+												</xs:unique>
+											</xs:element>
+										</xs:all>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="required" type="xs:boolean" use="optional">
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="search" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="searchprovider" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="required" type="xs:boolean" use="optional">
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="object" minOccurs="0" maxOccurs="10">
+									<xs:complexType>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="name" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="required" type="xs:boolean" use="optional">
+										</xs:attribute>
+										<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
+										</xs:attribute>
+										<xs:attribute name="rdoviewartifactid" type="xs:integer" use="optional">
+										</xs:attribute>
+										<xs:attribute name="displaytype" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="singlepicker"/>
+													<xs:enumeration value="multipicker"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="typeartifactguid" use="optional">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="rdoviewartifactguid" use="optional">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+							<xs:attribute name="orientation" use="optional">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="vertical"/>
+										<xs:enumeration value="horizontal"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="display" minOccurs ="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:all minOccurs="0">
+								<xs:element name="settings" minOccurs="0">
+									<xs:complexType>
+										<xs:attribute name="reporttitle" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:all>
+							<xs:attribute name="type" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="report"/>
+										<xs:enumeration value="table"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="key" minOccurs ="0" maxOccurs="1" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="450"/>
+								<xs:whiteSpace value="preserve"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="security" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:choice maxOccurs="unbounded">
+								<xs:element name="acl" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="id" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="typeartifactid" type="xs:integer" use="optional">
+										</xs:attribute>
+										<xs:attribute name="typeartifactguid" use="optional">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="type" use="required">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="view"/>
+													<xs:enumeration value="edit"/>
+													<xs:enumeration value="delete"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
 				<xs:element name="action" minOccurs="1" maxOccurs="10">
 					<xs:complexType>
 						<xs:simpleContent>
@@ -364,7 +368,7 @@
 						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
-			</xs:choice>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
