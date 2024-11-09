@@ -1,0 +1,15 @@
+<script>
+     <name>Example</name>
+     <description>Example Decsription</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <input>
+          <searchprovider id="SearchProvider" name="Search Index:" />
+            
+     </input>
+     <action returns="table">
+               <![CDATA[
+               select [ArtifactID],[Name] from [SearchProvider] where [ArtifactID] = #SearchProvider#
+               ]]>
+     </action>
+</script>

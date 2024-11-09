@@ -1,0 +1,24 @@
+<script>
+     <name>Example</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <input>
+          <sql id="viewID" name="Views">
+               SELECT
+               Display = [Name],
+               ID = [ArtifactID]
+               FROM
+               [View]
+          </sql>
+     </input>
+     <display type="report">
+          <settings reporttitle="Test Title" />
+     </display>
+     <action returns="table">
+          <![CDATA[
+               SELECT * FROM [View]
+               WHERE ArtifactID = #viewID# 
+          ]]>
+     </action>
+</script>

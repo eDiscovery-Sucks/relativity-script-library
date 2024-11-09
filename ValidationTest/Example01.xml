@@ -1,0 +1,13 @@
+<script>
+     <name>Example Script 01</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <display type="table"></display>
+     <key>dadaa5c9-2153-42ae-aef0-a1506be6da2b</key>
+     <action returns="table">
+          <![CDATA[
+            <p> 
+          ]]>
+     </action>
+</script>

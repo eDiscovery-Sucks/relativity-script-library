@@ -1,0 +1,15 @@
+<script>
+     <name>Object Test Script</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <input orientation="horizontal">
+          <object id="Tab" name="Tab" displaytype="multipicker" typeartifactid="1035238" rdoviewartifactid="1034262" />
+     </input>
+     <action returns="table">
+          <![CDATA[
+               select top 10 * from [Tab]
+               where [ArtifactID] in (#Tab#)
+          ]]>
+     </action>
+</script>

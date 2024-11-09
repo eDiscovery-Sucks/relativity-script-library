@@ -1,0 +1,11 @@
+<script>
+     <name>Description Example</name>
+     <description>This is an example script for using the description element</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <display type="table" />
+     <action returns="table">
+          <![CDATA[
+          ]]>
+     </action>
+</script>

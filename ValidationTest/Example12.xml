@@ -1,0 +1,11 @@
+<script>
+     <name>Example Script</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <display type="table"></display>
+     <action returns="table">
+          <![CDATA[
+          ]]>
+     </action>
+</script>

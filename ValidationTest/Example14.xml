@@ -1,0 +1,14 @@
+<script>
+     <name>Settings Element</name>
+     <description>Example Description</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <display type="report">
+          <settings reporttitle="Test Title" />
+     </display>
+     <action returns="table">
+          <![CDATA[
+               Select top 10 [ArtifactID] from [View]
+          ]]>
+     </action>
+</script>

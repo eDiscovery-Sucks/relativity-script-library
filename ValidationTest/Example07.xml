@@ -1,0 +1,73 @@
+<script>
+    <name>Populate Parent ID to Child</name>
+    <description>This is a workspace-level Relativity script that propagates the Document ID of the parent document to any children of that document.</description>
+    <category>Case Functionality</category>
+      <version>2.0</version>
+      <key>F385B552-70E1-A9B8-9DC1-9AE9309EDF49</key>
+    <input>
+        <field id="GROUP_ID" name="Group Identifier field:">
+            <filters>
+                <category>5</category>
+            </filters>
+        </field>
+        <field id="UPDATE_FLAG" name="Document to be updated flag:">
+            <filters>
+                <type>3</type>
+                <category>0</category>
+            </filters>
+        </field>
+        <field id="ITEM_ID" name="Parent ID source:">
+            <filters>
+                <type>0</type>
+                <type>1</type>
+            </filters>
+        </field>
+        <field id="FIELD_PROPAGATE" name="Parent ID destination:">
+            <filters>
+                <type>0</type>
+                <type>1</type>
+            </filters>
+        </field>
+    </input>
+    <action returns="table" timeout="indefinite"><![CDATA[
+        
+    --do not allow user to select artifact id to overwrite
+    IF '#FIELD_PROPAGATE#' = '[ArtifactID]'
+        RAISERROR ('ArtifactID can not be overwritten.', 16, 1)  
+    ELSE IF '#FIELD_PROPAGATE#' = '#ITEM_ID#'
+        RAISERROR ('Item ID can not be overwritten. Please choose seperate field for propagation.', 16, 1)
+  ELSE
+    BEGIN
+           Select A.ArtifactID as ArtifactID, A.#GROUP_ID# AS GroupIdentifier, A.#ITEM_ID# as DocumentIdentifier
+        INTO #SASPopulateParentIdTable
+        From Document A
+        Where 1 = 0
+
+        INSERT INTO #SASPopulateParentIdTable (ArtifactID, GroupIdentifier,DocumentIdentifier)
+        SELECT MIN(A.ArtifactID) as ArtifactID, A.#GROUP_ID# AS GroupIdentifier,''''
+        FROM eddsdbo.DOCUMENT A (NOLOCK)
+        WHERE A.#UPDATE_FLAG# = 1 
+        GROUP BY A.#GROUP_ID#    
+
+        update t
+        Set t.DocumentIdentifier = D.#ITEM_ID#
+        FROM #SASPopulateParentIdTable t (NOLOCK)
+        INNER JOIN Document D (NOLOCK) on D.ArtifactID = t.ArtifactID
+
+
+        CREATE UNIQUE CLUSTERED INDEX IX_PopulateParentID_GroupIDArtifactID ON #SASPopulateParentIdTable ([GroupIdentifier] ASC,[ArtifactID] ASC)
+
+        UPDATE D
+        SET D.#FIELD_PROPAGATE# = K.DocumentIdentifier
+        FROM Document D (NOLOCK) 
+        INNER JOIN #SASPopulateParentIdTable K ON D.#GROUP_ID# = K.GroupIdentifier
+        WHERE K.ArtifactID != D.ArtifactID
+        
+        SELECT D.ArtifactID, D.#ITEM_ID#, D.#GROUP_ID#, D.#FIELD_PROPAGATE#
+        FROM Document D (NOLOCK) INNER JOIN #SASPopulateParentIdTable K ON D.#GROUP_ID# = K.GroupIdentifier
+        ORDER BY D.#GROUP_ID#, D.#ITEM_ID#
+    
+    END
+    
+]]></action>
+</script>

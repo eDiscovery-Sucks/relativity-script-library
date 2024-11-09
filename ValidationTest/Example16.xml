@@ -1,0 +1,13 @@
+<script>
+     <name>Security Example</name>
+     <description>Examples of how to use security</description>
+     <category>Example Category</category>
+     <version>1.0</version>
+     <security>
+          <acl id="id" type="delete" typeartifactguid="e0fed438-97d6-4ee2-b3c8-f7cc2a4512b1" />
+            
+     </security>
+     <action returns="table"><![CDATA[
+          SELECT * FROM [Field] WHERE [AccessControlListID] in (#id#)
+     ]]></action>
+</script>
